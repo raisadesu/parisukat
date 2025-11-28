@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How Many Squares Can You See?</title>
+    <title>Ilang Parisukat ang Nakikita Mo?</title>
     <style>
         * {
             margin: 0;
@@ -277,8 +277,8 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🔷 How Many Squares Can You See?</h1>
-            <p>Count all the squares inside the big square. Then check your answer by revealing them.</p>
+            <h1>🔷 Ilang Parisukat ang Nakikita Mo?</h1>
+            <p>Bilangin ang lahat ng parisukat sa loob ng malaking parisukat. Pagkatapos, suriin ang iyong sagot sa pamamagitan ng pagpapakita nito.</p>
         </div>
 
         <div class="main-content">
@@ -288,29 +288,29 @@
 
             <div class="controls">
                 <div class="control-group">
-                    <label for="userAnswer">Your Answer:</label>
-                    <input type="number" id="userAnswer" placeholder="How many squares do you see?" min="1">
+                    <label for="userAnswer">Ang Iyong Sagot:</label>
+                    <input type="number" id="userAnswer" placeholder="Ilang parisukat ang nakikita mo?" min="1">
                 </div>
 
-                <button class="button button-primary" onclick="checkAnswer()">Check My Answer</button>
-                <button class="button button-secondary" id="revealBtn" onclick="revealAllSquares()">Show All Squares</button>
+                <button class="button button-primary" onclick="checkAnswer()">Suriin ang Aking Sagot</button>
+                <button class="button button-secondary" id="revealBtn" onclick="revealAllSquares()">Ipakita ang Lahat ng Parisukat</button>
 
                 <div class="feedback" id="feedback"></div>
                 <div class="counter" id="counter"></div>
 
                 <div class="legend">
-                    <h3>Legend:</h3>
+                    <h3>Alamat:</h3>
                     <div class="legend-item">
                         <div class="legend-color default"></div>
-                        <span>Default square</span>
+                        <span>Default na parisukat</span>
                     </div>
                     <div class="legend-item">
                         <div class="legend-color current"></div>
-                        <span>Current square (being shown)</span>
+                        <span>Kasalukuyang parisukat (ipinapakita)</span>
                     </div>
                     <div class="legend-item">
                         <div class="legend-color revealed"></div>
-                        <span>Revealed: 1×1 (green), 2×2 (blue), 3×3 (purple), 4×4 (magenta)</span>
+                        <span>Ipinakita na: 1×1 (berde), 2×2 (asul), 3×3 (lila), 4×4 (magenta)</span>
                     </div>
                 </div>
             </div>
@@ -428,7 +428,7 @@
             
             // Reveal each square with a delay
             for (let i = 0; i < squares.length; i++) {
-                counter.textContent = `Square ${i + 1} of ${squares.length}`;
+                counter.textContent = `Parisukat ${i + 1} ng ${squares.length}`;
                 highlightSquare(i);
                 await new Promise(resolve => setTimeout(resolve, 700));
             }
@@ -443,7 +443,7 @@
             counter.textContent = '';
             feedback.className = 'feedback info';
             feedback.style.display = 'block';
-            feedback.textContent = `Total squares: ${squares.length}`;
+            feedback.textContent = `Kabuuang parisukat: ${squares.length}`;
             
             revealBtn.disabled = false;
             isRevealing = false;
@@ -458,7 +458,7 @@
             if (isNaN(userAnswer) || userAnswer < 1) {
                 feedback.className = 'feedback error';
                 feedback.style.display = 'block';
-                feedback.textContent = '⚠️ Please enter a valid number!';
+                feedback.textContent = '⚠️ Mangyaring maglagay ng wastong numero!';
                 counter.textContent = '';
                 return;
             }
@@ -468,14 +468,14 @@
             if (userAnswer === squares.length) {
                 feedback.className = 'feedback success';
                 feedback.style.display = 'block';
-                feedback.textContent = `🎉 Correct! Great job! There are exactly ${squares.length} squares.`;
+                feedback.textContent = `🎉 Tama! Magaling! May eksaktong ${squares.length} parisukat.`;
             } else {
                 feedback.className = 'feedback error';
                 feedback.style.display = 'block';
                 const hint = userAnswer < squares.length 
-                    ? 'Try counting larger squares that overlap!' 
-                    : 'You might be counting some shapes twice!';
-                feedback.textContent = `❌ Not quite. ${hint} Try again or click "Show All Squares"!`;
+                    ? 'Subukang bilangin ang mas malalaking parisukat na nag-ooverlap!' 
+                    : 'Baka binibilang mo ang ilang hugis nang dalawang beses!';
+                feedback.textContent = `❌ Hindi pa tama. ${hint} Subukan ulit o i-click ang "Ipakita ang Lahat ng Parisukat"!`;
             }
         }
 
